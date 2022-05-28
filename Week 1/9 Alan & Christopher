@@ -1,0 +1,57 @@
+function runProgram(input) {
+    input = input.split("\n");
+    let size = +input[0];
+    let line = 1;
+    for(let i=0; i<size; i++){
+        let str = input[line];
+        stk = [];
+        deciper(str);
+        line++;
+    }
+}
+
+var stk = [];
+
+function deciper(str){
+    for(let i=0; i<str.length; i++){
+        if(str[i] === '#'){
+            popOp();
+        }else{
+            pushOp(str[i]);
+        }
+    }
+    console.log(stk.join(""));
+}
+
+function popOp(){
+    if(stk.length === 0){
+        return;
+    }else{
+        stk.pop();
+    }
+}
+
+function pushOp(ele){
+    stk.push(ele);
+}
+
+if (process.env.USER === "") {
+    runProgram(``);
+  } else {
+    process.stdin.resume();
+    process.stdin.setEncoding("ascii");
+    let read = "";
+    process.stdin.on("data", function (input) {
+      read += input;
+    });
+    process.stdin.on("end", function () {
+      read = read.replace(/\n$/, "");
+      read = read.replace(/\n$/, "");
+      runProgram(read);
+    });
+    process.on("SIGINT", function () {
+      read = read.replace(/\n$/, "");
+      runProgram(read);
+      process.exit(0);
+    });
+  }
