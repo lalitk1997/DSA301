@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+<body>
+    <h3>Classes in JavaScript</h3>
+</body>
+</html>
+<script>
+
+    // console.log("Hello");
+
+    // NORMAL OBJ
+    let obj = {
+        name: "Lalit",
+        city: "Gurgaon",
+
+        // EMPTY
+        // printCity: () => {
+        //     return this.name;
+        // }
+
+        printCity: function(){
+            return this.city;
+        }
+    };
+    console.log(obj.printCity());
+
+    class Person{
+        constructor(name, city){
+            this.name = name;
+            this.city = city;
+        }
+    }
+
+    var person1 = new Person("Lalit Kumar", "Gurgaon");
+    console.log(person1);
+    console.log(person1.name, person1.city);
+
+    class Rectangle{
+        constructor(len, bre){
+            this.length = len;
+            this.breadth = bre;
+        }
+        area(){
+            return this.length * this.breadth;
+        }
+        totalPrice(price){
+            return this.length * this.breadth * price;
+        }
+    }
+    var rect = new Rectangle(10, 20);
+    console.log(rect.area());
+    console.log(rect.totalPrice(10));
+
+    class Arr{
+        constructor(){
+            this.arr = [];
+            this.length = 0;
+        }
+        isEmpty(){
+            if(this.arr.length === 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        push(val){
+            this.arr[this.length] = val;
+            this.length += 1;
+        }
+    }
+
+    let arr = new Arr();
+    console.log(arr.isEmpty());
+    arr.push(1);
+    arr.push(2);
+    arr.push(3);
+    arr.push(4);
+    console.log(arr.isEmpty());
+</script>

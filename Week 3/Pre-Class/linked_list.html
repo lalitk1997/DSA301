@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linked List Implementation</title>
+  </head>
+  <body>
+    <h3>Linked List Implementation</h3>
+  </body>
+</html>
+<script>
+  // console.log("Linked-List");
+
+  // 1. What is Linked List
+  // 2. Linked List v/s Arrays
+  // 3. Operations on Linked List
+  // 4. Linked List from scratch
+
+  // Arrays
+  // 1. Contiguous Memory
+  // 2. Random Access
+  // 3. Collection of similar data-items
+
+  // Linked-List
+  // 1. Non-Contiguous Memory
+  // 2. No Random Access
+  //            -------------------------------
+  // 3. Node -> | Data | address of next node |
+  //            -------------------------------
+
+  // Operation on Linked List
+  // 1. Insertion
+  // 1.1 Insertion at the beginning
+  // 1.2 Insertion in between
+  // 1.3 Insertion at the end
+  // 2. Deletion
+  // 2.1 Deletion from beginning
+  // 2.2 Deletion in between
+  // 2.3 Deletion at the end
+  // 3 Print Linked List
+
+  class Node {
+    constructor(x) {
+      this.data = x;
+      this.next = null;
+    }
+  }
+
+  class LinkedList {
+    constructor() {
+      this.head = null;
+    }
+    // Implementation 1.1
+    insertionAtBeg(data) {
+      var newNode = new Node(data);
+      if (this.head === null) {
+        this.head = newNode;
+      } else {
+        newNode.next = this.head;
+        this.head = newNode;
+      }
+    }
+
+    // Implementation 1.3
+    insertionAtEnd(data) {
+      var newNode = new Node(data);
+      if (this.head == null) {
+        this.head = newNode;
+      } else {
+        var cur = this.head;
+        while (cur.next != null) {
+          cur = cur.next;
+        }
+        cur.next = newNode;
+      }
+    }
+
+    // Implementation 3
+    printLL() {
+      var cur = this.head;
+      if (cur == null) {
+        console.log("Underflow");
+      } else {
+        while (cur.next !== null) {
+          console.log(cur.data);
+          cur = cur.next;
+        }
+        console.log(cur.data);
+      }
+    }
+
+    // Implementation 2.1
+    deleteFromBeg() {
+      if (this.head == null) {
+        console.log("Underflow");
+      } else {
+        this.head = this.head.next;
+      }
+    }
+
+    // Implemenation 2.3
+    deleteFromEnd() {
+      var cur = this.head;
+      while (cur.next.next !== null) {
+        cur = cur.next;
+      }
+      // console.log(cur.data);
+      cur.next = null;
+    }
+  }
+
+  var linklist = new LinkedList();
+  linklist.insertionAtBeg(1);
+  linklist.insertionAtBeg(2);
+  linklist.insertionAtBeg(3);
+  linklist.insertionAtBeg(4);
+  linklist.insertionAtBeg(5);
+  linklist.insertionAtBeg(6);
+  linklist.printLL();
+  console.log("<------>");
+  linklist.deleteFromBeg();
+  linklist.deleteFromBeg();
+  linklist.printLL();
+  console.log("<------>");
+  linklist.deleteFromEnd();
+  linklist.printLL();
+
+  // console.log(linklist);
+</script>
